@@ -14,8 +14,7 @@ public class IdCheckService {
 	@Autowired
 	private SqlSessionTemplate template; 
 	
-	public String checkId(String uid) {
-		
+	public String checkId(String uid) {	
 		dao = template.getMapper(MemberDaoInterface.class);
 		
 		String result = "N"; 
@@ -29,5 +28,23 @@ public class IdCheckService {
 		}
 		return result; 
 	}
+	
+	public String checkName(String uname) {
+		
+		dao = template.getMapper(MemberDaoInterface.class);
+		
+		String result = "N"; 
+		
+		System.out.println("1번 :"+result);
+		
+		int resultCnt = dao.selectByUname(uname); 
+		if(resultCnt < 1 ) { 
+			result = "Y"; 
+			System.out.println("2번 :"+result);
+		}
+		return result; 
+	}
+	
+	
 	
 }

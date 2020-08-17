@@ -31,6 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from planit.member where uid=#{uid}
 	</select>
 	
+	<select id="selectByUname"
+		resultType="int">
+		select count(*) from planit.member where uname=#{uname}
+	</select>
+	
 	<!-- 한페이지에 보이게  -->
 	<select id="selectList" resultMap="resultMember"> 
 		select * from planit.member order by uidx desc limit #{param1}, #{param2}
@@ -41,6 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			resultType="int">
 		select count(*) from planit.member	
 	</select>
+	
 	
 	<insert id="insertMember"
 			parameterType="com.aia.it.member.model.Member"

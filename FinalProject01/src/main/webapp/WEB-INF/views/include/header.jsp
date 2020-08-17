@@ -11,6 +11,8 @@
 		<c:if test="${!empty loginInfo}">
 		<li><a href="<c:url value="/member/memberList"/>">회원 리스트</a></li>
 		<li><a href="<c:url value="/login/logout"/>">로그아웃</a></li>
+		<li><a href="<c:url value="/board/boardWrite"/>">로그아웃</a></li>
+		<li><a href="<c:url value="/board/boardList"/>">커뮤니티</a></li>
 		
 		</c:if>
 

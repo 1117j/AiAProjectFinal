@@ -29,5 +29,7 @@ public interface MemberDaoInterface {
 	
 	int selectById(String uid); 
 	
+	int selectByUname(String uname); 
+	
 	
 }

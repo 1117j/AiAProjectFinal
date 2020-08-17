@@ -38,7 +38,7 @@ public class BoardWriteController {
 		
 		System.out.println("controller: " + bRequest);
 		model.addAttribute("result", writeService.boardWrite(bRequest, request));
-		return "board/boardWhite";
+		return "board/boardWrite";
 	}
 	
 

@@ -17,7 +17,7 @@
 	<h1>회원 리스트</h1>
 	
 	<c:if test = "${not empty memberListView}">
-		${memberListView.memberTotalCount}명
+		${memberListView.memberTotalCnt}명
 	</c:if>
 	
 	<div>
@@ -93,7 +93,7 @@ btn.onclick = function() {
 
  html += '<c:if test = "${not empty memberListView}">';
 
- html += '${memberListView.memberTotalCount}명';
+ html += '${memberListView.memberTotalCnt}명';
  html += '</c:if>';
 
  $('#modal-content').html(html);

@@ -14,15 +14,16 @@
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 	메인페이지 입니다.
+	
+	<c:if test="${empty loginInfo}"> 
+	<a id="custom-login-btn" href="${kakao_url}"> <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" /></a>
+	</c:if>
 
 </body>
 </html>
 
 <script>	
-	<c:if test="${empty loginInfo}"> 
-	alert('로그인 페이지로 이동합니다.');
-	location.href='login/login';
-	</c:if>
+
 	<c:if test="${!empty loginInfo}">
 	</c:if>
 </script>

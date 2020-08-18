@@ -92,7 +92,10 @@ public class BoardWriteService {
 				board.setBphoto2("defalult.png");
 
 			}
-
+			
+			System.out.println("여기까지 왔는지 확인: "+ dao.insertBoard(board));
+			System.out.println("입력 후 IDX ===> " + board.getBidx());
+			
 			result = dao.insertBoard(board);
 
 			System.out.println("입력 후 IDX ===> " + board.getBidx());

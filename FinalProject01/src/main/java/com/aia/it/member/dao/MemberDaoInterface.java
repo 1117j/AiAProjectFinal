@@ -11,6 +11,8 @@ public interface MemberDaoInterface {
 	//회원가입
 	int insertMember(Member member);
 	
+	int insertKakaoMember(Member member); 
+	
 	//전체 회원리스트 반환
 	public List<Member> selectTotalList(); 
 	
@@ -30,6 +32,5 @@ public interface MemberDaoInterface {
 	int selectById(String uid); 
 	
 	int selectByUname(String uname); 
-	
-	
+
 }

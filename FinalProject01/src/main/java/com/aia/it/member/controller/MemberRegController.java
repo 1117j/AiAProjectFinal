@@ -1,5 +1,9 @@
 package com.aia.it.member.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +30,7 @@ public class MemberRegController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String getMemberReg(MemberRegRequest regRequest, 
 								HttpServletRequest request,
-								Model model) {
+								Model model) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException{
 		
 		model.addAttribute("result", regService.memberReg(regRequest, request));
 		

@@ -42,7 +42,7 @@ public class LoginService {
 
 		member = dao.selectByIdpw(loginRequest.getUid(), loginRequest.getUpw());
 
-		System.out.println("LoginService Member : " + member);
+		System.out.println("LoginService Member(멤버정보) : " + member);
 
 		if (member != null) {
 

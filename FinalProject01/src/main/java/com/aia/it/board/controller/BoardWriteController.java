@@ -23,6 +23,7 @@ public class BoardWriteController {
 	@Autowired
 	private MemberListService listService; 
 	
+	//주소창에 정보 노출
 	@RequestMapping(method = RequestMethod.GET)
 	public String getBoardForm(Model model, 
 							HttpServletRequest request, 
@@ -31,7 +32,7 @@ public class BoardWriteController {
 		model.addAttribute("memberListView", listService.getView(request, response));
 		return "board/boardWriteForm";
 		}
-	
+	@RequestMapping(method = RequestMethod.POST)
 	public String getBoard(BoardRequest bRequest, 
 							HttpServletRequest request, 
 							Model model) {

@@ -17,32 +17,31 @@ import com.aia.it.member.controller.KakaoApiController;
 
 @Controller
 public class HomeController {
-
-	@RequestMapping(value = "/home")
-	    public String kakaoLogin() {
-	        
-	        return "home";
-	        
-	}
-	
-}
-
-
-//	@RequestMapping("/home")
-//	public String home() {
 //
-////		String str = null;
-////		str.toString();
-//
-//		return "home";
+//	@RequestMapping(value = "/home")
+//	    public String kakaoLogin() {
+//	        
+//	        return "home";
+//	        
 //	}
-//
-//	@ExceptionHandler(NullPointerException.class)
-//	public String handleNullPointerException(NullPointerException e) {
-//
-//		e.printStackTrace();
-//
-//		return "error/nullPointer";
-//
-//	}
+//	
 //}
+
+
+	@RequestMapping("/home")
+	public String home() {
+		String str = null;
+		str.toString();
+
+		return "home";
+	}
+
+	@ExceptionHandler(NullPointerException.class)
+	public String handleNullPointerException(NullPointerException e) {
+
+		e.printStackTrace();
+
+		return "error/nullPointer";
+
+	}
+}

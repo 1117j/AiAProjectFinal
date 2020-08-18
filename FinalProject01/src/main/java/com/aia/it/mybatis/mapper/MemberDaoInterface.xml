@@ -33,6 +33,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		planit.member where uid=#{uid}
 	</select>
 
+	<select id="selectMemberById" resultMap="resultMember">
+		select * from planit.member where uid=#{uid}
+	</select>
+	
 	<select id="selectByUname" resultType="int">
 		select count(*) from
 		planit.member where uname=#{uname}
@@ -40,7 +44,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 한페이지에 보이게 -->
 	<select id="selectList" resultMap="resultMember">
-		select * from planit.member order by uidx desc limit #{param1}, #{param2}
+		select * from planit.member
+		order by uidx desc limit #{param1}, #{param2}
 	</select>
 
 	<!-- 전체가입자수 개수 -->
@@ -54,20 +59,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.aia.it.member.model.Member" useGeneratedKeys="true"
 		keyProperty="uidx">
 
-		INSERT INTO planit.member (uid, upw, uname, uphonenum, uphoto)
+		INSERT INTO planit.member (uid, upw, uname, uphonenum,
+		uphoto)
 		VALUES (#{uid}, #{upw}, #{uname}, #{uname}, #{uphoto})
 
 	</insert>
+	
 
-<!--카카오 회원추가  -->
+	
+	<!-- 이메일 인증 여부 수정 -->
+	<update id="verify">
+		update planit.member set verify='Y'
+		where uid=#{param1} and ucode=#{param2}
+	</update>
+
+	<select id="selectMemberById" resultMap="resultMember">
+		select * from project.member where uid=#{id}
+	</select>
+
+
+	<!--카카오 회원추가 -->
 	<insert id="insertKakaoMember"
 		parameterType="com.aia.it.member.model.Member" useGeneratedKeys="true"
-		keyProperty="midx">
+		keyProperty="uidx">
 	
-	<![CDATA[
-		INSERT INTO w1f1.member (uid, uname, uphonenum, uphoto)
+		INSERT INTO planit.member (uid, uname, uphonenum, uphoto)
 		VALUES (#{uid}, #{uname}, #{uphonenum}, #{uphoto})
-	]]>
+
 
 	</insert>
 

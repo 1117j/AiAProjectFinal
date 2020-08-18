@@ -54,9 +54,14 @@ public class MemberRegService {
 				member.setUphoto("default.png");
 			}
 			
-			result = dao.insertKakaoMember(member); 
-		
-			} catch (IllegalStateException e) {
+//			if(member.ukakao == "Y") {
+//				result = dao.insertKakaoMember(member); }
+//				else {
+				result = dao.insertMember(member); //}
+				
+
+				}
+		 catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {

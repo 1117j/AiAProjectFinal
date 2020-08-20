@@ -31,4 +31,5 @@ public interface BoardDaoInterface {
 	
 	public Member selectMemberById(String email);
 
+
 }

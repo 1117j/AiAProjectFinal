@@ -59,9 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.aia.it.member.model.Member" useGeneratedKeys="true"
 		keyProperty="uidx">
 
-		INSERT INTO planit.member (uid, upw, uname, uphonenum,
-		uphoto)
-		VALUES (#{uid}, #{upw}, #{uname}, #{uname}, #{uphoto})
+		INSERT INTO planit.member (uid, upw, uname, uphonenum, uphoto)
+		VALUES (#{uid}, #{upw}, #{uname}, #{uphonenum}, #{uphoto})
 
 	</insert>
 	
@@ -69,22 +68,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 이메일 인증 여부 수정 -->
 	<update id="verify">
-		update planit.member set verify='Y'
+		update planit.member set uverify='Y'
 		where uid=#{param1} and ucode=#{param2}
 	</update>
-
-	<select id="selectMemberById" resultMap="resultMember">
-		select * from project.member where uid=#{id}
-	</select>
-
 
 	<!--카카오 회원추가 -->
 	<insert id="insertKakaoMember"
 		parameterType="com.aia.it.member.model.Member" useGeneratedKeys="true"
 		keyProperty="uidx">
 	
-		INSERT INTO planit.member (uid, uname, uphonenum, uphoto)
-		VALUES (#{uid}, #{uname}, #{uphonenum}, #{uphoto})
+		INSERT INTO planit.member (uid, uname, upw, uphonenum, uphoto, ukakao, uverify)
+		VALUES (#{uid}, #{uname}, '임의로넣어줌', #{uphonenum}, #{uphoto}, 'Y', 'Y')
 
 
 	</insert>

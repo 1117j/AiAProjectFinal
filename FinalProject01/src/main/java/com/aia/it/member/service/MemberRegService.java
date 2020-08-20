@@ -21,13 +21,12 @@ public class MemberRegService {
 	@Autowired
 	private SqlSessionTemplate sessionTemplate;
 	
-		public String memberReg(MemberRegRequest regRequest, HttpServletRequest request) { 
+		public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) { 
 			
 			dao = sessionTemplate.getMapper(MemberDaoInterface.class); 
 			
 			int result = 0; 
-			
-			String regResult = ""; 
+
 			
 			//DAO 메서드 전달할 객체 -> 입력 데이터 설정하는 절차 
 			
@@ -53,14 +52,10 @@ public class MemberRegService {
 			}else {
 				member.setUphoto("default.png");
 			}
-			
-//			if(member.ukakao == "Y") {
-//				result = dao.insertKakaoMember(member); }
-//				else {
-				result = dao.insertMember(member); //}
+	
+			result = dao.insertMember(member); //}
 				
-
-				}
+			}
 		 catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -70,17 +65,7 @@ public class MemberRegService {
 			} finally {
 			}
 			
-			if(result != 0) {
-				
-				// 회원가입 성공 시
-				regResult = "<script>" + "alert('가입이 완료되었습니다.');" + "location.href=\"/login/member/kakaiLoginForm\"</script>";
-			} else {
-				
-				// 회원가입 실패 시
-				regResult = "<script>" + "alert('가입에 실패했습니다.');" + "history.go(-1);" + "</script>";
-			}
-			
-			return regResult; 
+			return result; 
 		}
 	
 

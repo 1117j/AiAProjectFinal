@@ -25,7 +25,7 @@ public class KakaoApiController {
 
 	// 참고
 	// 승연 git
-	private final static String KKO_CID = "클라이언트 아이디";
+	private final static String KKO_CID = "36d2bcd100f7b96e12d7e3b37ca39aa9";
 
 	private final static String KKO_RE_URI = "http://localhost:8080/it/kakaoLogin";
 
@@ -49,7 +49,7 @@ public class KakaoApiController {
 		// "authorization_code"로 고정
 		POSTPARAMS.add(new BasicNameValuePair("grant_type", "authorization_code"));
 
-		POSTPARAMS.add(new BasicNameValuePair("client_id", "API 키 넣기")); // 자신의 REST API 키
+		POSTPARAMS.add(new BasicNameValuePair("client_id", "36d2bcd100f7b96e12d7e3b37ca39aa9")); // 자신의 REST API 키
 
 		// 아이피: 카카오에 등록된 사이트 도메인 http://127.0.0.1:56764
 		// 최상위 경로 : pom.xml에 등록되어있는 최상위 경로
@@ -57,7 +57,7 @@ public class KakaoApiController {
 		POSTPARAMS.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/it/kakaoLogin")); // 수정할 부분
 
 		// 승연: 보안강화위해 추가 확인하는 코드
-		POSTPARAMS.add(new BasicNameValuePair("client_secret", "보안코드 넣기"));
+		POSTPARAMS.add(new BasicNameValuePair("client_secret", "8EFxOKmadqqhwq1xu0uVyxXzJsYNcxwV"));
 
 		POSTPARAMS.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정 중 인증코드 받기 요청으로 얻은 code값
 

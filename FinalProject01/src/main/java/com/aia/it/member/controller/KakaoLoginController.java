@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aia.it.member.service.KakaoLoginService;
 import com.aia.it.member.service.LoginService;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -23,10 +24,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class KakaoLoginController {
 
 	@Autowired
-	LoginService loginService;
-
+	KakaoLoginService loginService;
+	
 	// 카카오 디벨로퍼스에서 미리 설정한 REST API의 리다이렉트 경로를 리턴하는 메서드
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public ModelAndView KakaoLoginForm(HttpSession session) {
 		ModelAndView mav = new ModelAndView(); 
 
@@ -35,9 +36,14 @@ public class KakaoLoginController {
 		System.out.println("KakaoLoginController.kakaoLoginForm " + kakaoUrl);
 		return mav;
 	}
+	
+//	@RequestMapping(method=RequestMethod.GET)
+//	public String kakaoLoginForm() {
+//		return "member/kakaoInfo";
+//	}
 
 	// 리다이렉트로부터 토큰값을 받아 카카오 로그인정보를 세션에 저장하고 리턴하는 메서드
-	@RequestMapping(value = "/kakaoLogin ", produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/kakaoLogin ", produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
 	public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) {
 
@@ -53,26 +59,29 @@ public class KakaoLoginController {
 		System.out.println(userInfo);
 
 		// json 형태로 저장된 사용자 정보를 추출하여 저장하는 과정
-		String kid = userInfo.path("id").asText();                              
-		String uname = null;
-		String uid = null;
-
+		String id = userInfo.path("id").asText();                              
+		String nickname = null;
+//		String uid = null;
+		String profile_image = null;
+		
 		JsonNode properties = userInfo.path("properties");
 		JsonNode kakao_account = userInfo.path("kakao_account");
 
 		if (properties.isMissingNode() && kakao_account.isMissingNode()) {
 
 		} else {
-			uname = properties.path("uname").asText();
-			uid = kakao_account.path("uid").asText();
+			nickname = properties.path("nickname").asText();
+			profile_image = properties.path("profile_image").asText();
+//			uid = kakao_account.path("uid").asText();
 		}
-		System.out.println("kid : " + kid);
-		System.out.println("uname : " + uname);
-
+//		System.out.println("카카오 id : " + id);
+//		System.out.println("카카오 닉네임 : " + nickname);
+//		System.out.println("사진 경로: " + profile_image);
 		// 추출한 사용자 정보를 세션에 저장
-		session.setAttribute("kid", kid);
-		session.setAttribute("uname", uname);
-		session.setAttribute("uid", uid);
+		session.setAttribute("uid", id);
+		session.setAttribute("uname", nickname);
+		session.setAttribute("photo", profile_image);
+//		session.setAttribute("uid", uid);
 
 		// 새로운 페이지로 리턴
 		return "member/kakaoInfo";

@@ -10,6 +10,7 @@ public interface MemberDaoInterface {
 	// 회원가입
 	int insertMember(Member member);
 
+	//카카오로 회원가입
 	int insertKakaoMember(Member member);
 
 	// 전체 회원리스트 반환
@@ -35,7 +36,7 @@ public interface MemberDaoInterface {
 	int selectByUname(String uname);
 
 	// 회원 이메일 인증 처리
-	public int verify(String id, String code);
+	public int verify(String uid, String ucode);
 
 	
 	

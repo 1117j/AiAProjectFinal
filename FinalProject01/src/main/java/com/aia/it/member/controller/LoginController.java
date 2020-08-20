@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aia.it.member.model.LoginRequest;
 import com.aia.it.member.service.LoginService;
@@ -24,20 +25,21 @@ public class LoginController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String loginForm() {
-		return "member/loginForm";
+		return "home";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
+	@ResponseBody
 	public String login(
 			LoginRequest loginRequest,
 			HttpSession session,
-			HttpServletResponse response,
-			Model model
+			HttpServletResponse response
 			) {
 		
-		model.addAttribute("result", loginService.login(loginRequest, session, response));
+//		model.addAttribute("result", loginService.login(loginRequest, session, response));
+		System.out.println("여기는 로긴 컨트롤러: " + loginService.login(loginRequest, session, response));
 		
-		return "member/login";
+		return loginService.login(loginRequest, session, response);
 	}
 
 }

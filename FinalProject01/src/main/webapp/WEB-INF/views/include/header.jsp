@@ -6,7 +6,7 @@
 	<ul id="nav">
 		<c:if test="${empty loginInfo}">
 		<li><a href="${pageContext.request.contextPath}/member/memberReg">회원가입</a></li>
-		<li><a href="<c:url value="/login/login"/>">로그인</a></li>
+		<li><a href="<c:url value="/member/loginForm"/>">로그인</a></li>
 		</c:if>
 		<c:if test="${!empty loginInfo}">
 		

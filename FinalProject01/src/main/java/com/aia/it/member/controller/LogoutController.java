@@ -19,7 +19,7 @@ public class LogoutController {
 	
 	logoutService.logout(session);
 	
-	String viewName = "redirect:/login/login";
+	String viewName = "redirect:/home";
 	
 	return viewName;
 	

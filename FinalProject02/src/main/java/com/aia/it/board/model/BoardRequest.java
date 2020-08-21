@@ -46,8 +46,6 @@ public class BoardRequest {
 	}
 	
 	
-	
-	
 	public Board toBoard() {
 		
 		return new Board(btitle,bmsg,uidx);

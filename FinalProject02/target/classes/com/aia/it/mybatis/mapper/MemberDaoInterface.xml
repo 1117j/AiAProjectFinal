@@ -59,8 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.aia.it.member.model.Member" useGeneratedKeys="true"
 		keyProperty="uidx">
 
-		INSERT INTO planit.member (uid, upw, uname, uphonenum, uphoto)
-		VALUES (#{uid}, #{upw}, #{uname}, #{uphonenum}, #{uphoto})
+		INSERT INTO planit.member (uid, upw, uname, uphonenum, uphoto, uverify)
+		VALUES (#{uid}, #{upw}, #{uname}, #{uphonenum}, #{uphoto},'Y')
 
 	</insert>
 	

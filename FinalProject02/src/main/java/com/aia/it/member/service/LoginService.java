@@ -46,7 +46,7 @@ public class LoginService {
 
 		if (member != null && member.getUverify() == 'Y') {
 
-			LoginInfo loginInfo = new LoginInfo(member.getUid(), member.getUname(), member.getUphoto());
+			LoginInfo loginInfo = new LoginInfo(member.getUidx(), member.getUid(), member.getUname(), member.getUphoto());
 
 			session.setAttribute("loginInfo", loginInfo);
 
@@ -74,7 +74,7 @@ public class LoginService {
 			loginResult += "</script>";
 			
 		} else{
-			loginResult = "<script>" + "alert('아이디 또는 비밀번호가 잘못되었습니다.');" + "history.go(-1);" + "</script>";
+			loginResult = "<script>" + "alert('Please enter a correct email address.');" + "history.go(-1);" + "</script>";
 		}
 
 		return loginResult;

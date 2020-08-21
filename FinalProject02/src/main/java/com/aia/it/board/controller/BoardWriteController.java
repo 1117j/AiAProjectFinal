@@ -1,7 +1,7 @@
 package com.aia.it.board.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,38 +11,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aia.it.board.model.BoardRequest;
 import com.aia.it.board.service.BoardWriteService;
-import com.aia.it.member.service.MemberListService;
+import com.aia.it.daily.service.DailyListService;
 
 @Controller
 @RequestMapping("/board/boardWrite")
 public class BoardWriteController {
 	
 	@Autowired
-	BoardWriteService writeService; 
+	BoardWriteService writeService;
+
 	
 	@Autowired
-	private MemberListService listService; 
+	private DailyListService listDailyService;
 	
-	//주소창에 정보 노출
 	@RequestMapping(method = RequestMethod.GET)
-	public String getBoardForm(Model model, 
-							HttpServletRequest request, 
-							HttpServletResponse response) {
+	public String getBoardForm(
+			HttpSession session,
+			Model model,
+			HttpServletRequest request
+			) {
 		
-		model.addAttribute("memberListView", listService.getView(request, response));
-		return "board/boardWriteForm";
-		}
-	@RequestMapping(method = RequestMethod.POST)
-	public String getBoard(BoardRequest bRequest, 
-							HttpServletRequest request, 
-							Model model) {
-		
-		System.out.println("controller: " + bRequest);
-		model.addAttribute("result", writeService.boardWrite(bRequest, request));
-		return "board/boardWrite";
-	}
-	
+		model.addAttribute("listView", listDailyService.getDailyView(session, request));
 
+		return "board/boardWriteForm";
+	}
+	@RequestMapping(method = RequestMethod.POST)
+	public String getBoard(
+			BoardRequest bRequest, 
+			HttpServletRequest request, 
+			Model model) {
+		
+		System.out.println("controller: "+bRequest);
+		
+		model.addAttribute("result" , writeService.boardWrite(bRequest, request));
+		
+		return "board/boardWrite";
+		
+	}
 	
 	
 }
+

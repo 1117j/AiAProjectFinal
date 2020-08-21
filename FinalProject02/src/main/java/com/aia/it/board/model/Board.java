@@ -14,7 +14,6 @@ public class Board {
 	private int uidx;//회원 닉네임
 	
 	
-	
 	public int getBidx() {
 		return bidx;
 	}

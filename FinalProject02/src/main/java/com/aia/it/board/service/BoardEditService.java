@@ -16,37 +16,44 @@ import com.aia.it.board.model.BoardEditRequest;
 
 @Service
 public class BoardEditService {
-
+	
 	private BoardDaoInterface dao;
+	
 	@Autowired
-	private SqlSessionTemplate template;
-
+	private SqlSessionTemplate sessionTemplate;
+	
 	public Board getBoard(int bidx) {
 
-		dao = template.getMapper(BoardDaoInterface.class);
+		dao=sessionTemplate.getMapper(BoardDaoInterface.class);
+		
 		Board board = null;
+		
 		board = dao.selectByBidx(bidx);
+		
 		return board;
 	}
-
+	
 	public int boardEdit(BoardEditRequest editRequest, HttpServletRequest request) {
-		dao = template.getMapper(BoardDaoInterface.class);
+		
+		dao = sessionTemplate.getMapper(BoardDaoInterface.class);
+
 		int result = 0;
-		System.out.println("board edit 수정전 result : " + result);
+		System.out.println("수정전%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%result!"+result);
 
 		// MemberEditRequest -> Member : 이전 파일을 photo에 저장하고 시작
 		Board board = editRequest.toBoard();
-		System.out.println("board edit 수정전 result : " + board);
-		System.out.println("board edit 입력 전 bIDX : " + board.getBidx());
+		System.out.println("###########수@정@전!!"+board);
+		System.out.println("입력 전 IDX ===> " + board.getBidx());
 
 		MultipartFile file1 = editRequest.getBphoto1();
 		MultipartFile file2 = editRequest.getBphoto2();
-
+		
 		try {
 
+
 			// 1. 파일의 물리적인 저장 -> Member 객체의 photo 변수 데이터 설정
-			// 2. 이전 저장된 파일 삭제
-			if (file1 != null && !file1.isEmpty() && file1.getSize() > 0) {
+			// 2. 이전 저장된  파일 삭제
+			if (file1 != null && !file1.isEmpty() && file1.getSize() > 0 ) {
 				// 서버 내부의 경로
 				String uri = request.getSession().getServletContext().getInitParameter("boardUploadPath");
 
@@ -75,7 +82,7 @@ public class BoardEditService {
 				}
 
 			}
-			if (file2 != null && !file2.isEmpty() && file2.getSize() > 0) {
+			if (file2 != null && !file2.isEmpty() && file2.getSize() > 0 ) {
 				// 서버 내부의 경로
 				String uri = request.getSession().getServletContext().getInitParameter("boardUploadPath");
 
@@ -105,6 +112,7 @@ public class BoardEditService {
 
 			}
 
+
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,10 +120,10 @@ public class BoardEditService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-		}
+			}
 
-		result = dao.editBoard(board);
-		System.out.println("board edit 수정후의 결과입니다. result: " + result);
+		result=dao.editBoard(board);
+		System.out.println("수정후////////////////////////result!"+result);
 		return result;
 	}
 

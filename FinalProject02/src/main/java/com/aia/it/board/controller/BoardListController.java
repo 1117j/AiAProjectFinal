@@ -14,13 +14,19 @@ import com.aia.it.board.service.BoardListService;
 public class BoardListController {
 	
 	@Autowired
-	private BoardListService listService; 
+	private BoardListService listService;
 	
 	@RequestMapping("/board/boardList")
-	public String getBoardList(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String getBoardList(
+				Model model,
+				HttpServletRequest request,
+				HttpServletResponse response) {
+		
 		model.addAttribute("listView", listService.getView(request, response));
 		
 		return "board/boardList";
-	
+		
 	}
+	
+
 }

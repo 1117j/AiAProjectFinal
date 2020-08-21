@@ -12,14 +12,20 @@ import com.aia.it.board.service.BoardDeleteService;
 
 @Controller
 public class BoardDeleteController {
-	
-	@Autowired
-	private BoardDeleteService deleteService;
-	
-	@RequestMapping("/board/boardDelete")
-	public String deleteBoard(@RequestParam("bidx") int bidx, HttpServletRequest request, Model model) {
-		model.addAttribute("msg", deleteService.boardDelete(bidx, request));
-		return "board/boardDelete";
-	}
+   
+@Autowired
+   private BoardDeleteService deleteService;
+   
+   @RequestMapping("/board/boardDelete")
+   public String deleteBoard(
+            @RequestParam("bidx") int bidx,
+            HttpServletRequest request,
+            Model model
+         ) {
+      
+      model.addAttribute("msg", deleteService.boardDelete(bidx,request));
+      return "board/boardDelete";
+      
+   }
 
 }

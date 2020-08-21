@@ -1,4 +1,4 @@
-package com.aia.it.board.service;
+package com.aia.it.member.service;
 
 import java.io.UnsupportedEncodingException;
 

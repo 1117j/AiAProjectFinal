@@ -23,11 +23,16 @@ public interface MemberDaoInterface {
 	// idx 기반 검색한 회원 정보 반환
 	public Member SelectByUidx(int uidx);
 	
+	// 회원 정보 수정 
+	public int editMember(Member member);
+	
 
 	// 전체 게시물의 개수 : 검색 포함
 	public int totalCnt();
 
 	public Member selectByIdpw(String uid, String upw);
+	
+	public Member selectMyPage(int uidx); 
 
 	int selectById(String uid);
 

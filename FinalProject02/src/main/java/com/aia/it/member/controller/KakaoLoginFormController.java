@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aia.it.member.model.LoginRequest;
 import com.aia.it.member.service.KakaoLoginService;
@@ -20,7 +21,7 @@ public class KakaoLoginFormController {
 	@Autowired
 	KakaoLoginService kService;	
 	
-	@RequestMapping(method= RequestMethod.GET)
+	@RequestMapping(value = "kakaoLoginForm", method= RequestMethod.GET)
 	public String kloginForm() {
 		return "member/kakaoLoginForm";
 		

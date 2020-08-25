@@ -62,7 +62,7 @@ public class LoginService {
 			}
 
 			// 로그인 이 필요했던 이전 페이지
-			loginResult = "<script>" + "alert('hi~');" + "location.href='" + loginRequest.getRedirectUri() + "'" + "</script>";
+			loginResult = "<script>" + "alert('welcome back');" + "location.href='" + loginRequest.getRedirectUri() + "'" + "</script>";
 
 		} else if(member != null && member.getUverify() == 'N') {
 
@@ -74,7 +74,7 @@ public class LoginService {
 			loginResult += "</script>";
 			
 		} else{
-			loginResult = "<script>" + "alert('아이디 또는 비밀번호가 잘못되었습니다.');" + "history.go(-1);" + "</script>";
+			loginResult = "<script>" + "alert('Please enter a correct email address.');" + "history.go(-1);" + "</script>";
 		}
 
 		return loginResult;

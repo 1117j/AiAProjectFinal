@@ -22,7 +22,7 @@
 		<hr>
 		<c:if test="${!empty loginInfo}">
 		
-		<script> location.href = 'member/memberList';  </script>
+		<script> location.href = 'board/boardList';  </script>
 		
 		</c:if>
 		<c:if test="${empty loginInfo}">

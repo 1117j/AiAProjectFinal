@@ -11,17 +11,9 @@
 	href="${pageContext.request.contextPath}/css/default.css"/>
 
 <style>
-.check_ok {
-	color: blue;
-}
-
-.check_not {
-	color: red;
-}
-
-#idchk, #namechk {
-	display: none;
-}
+.check_ok {color: blue;}
+.check_not {color: red;}
+#idchk, #namechk {display: none;}
 </style>
 </head>
 <body>

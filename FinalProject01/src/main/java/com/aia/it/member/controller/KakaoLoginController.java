@@ -33,7 +33,7 @@ public class KakaoLoginController {
 
 		String kakaoUrl = KakaoApiController.getAuthorizationUrl(session);
 		mav.addObject("kakao_url", kakaoUrl);
-		System.out.println("KakaoLoginController.kakaoLoginForm " + kakaoUrl);
+		System.out.println("KakaoLoginController.kakaoLoginForm (카카오 url)" + kakaoUrl);
 		return mav;
 	}
 	

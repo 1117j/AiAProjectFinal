@@ -22,6 +22,9 @@
 			<c:if test = "${result lt 1}">
 				<div>회원가입 실패</div>
 			</c:if>
+			<script> 
+			location.href = "home"
+			</script>
 			
 		</h3>
 	</div>

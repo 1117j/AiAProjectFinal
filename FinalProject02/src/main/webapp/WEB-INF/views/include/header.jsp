@@ -15,6 +15,8 @@
 		<li><a href="<c:url value="/board/boardWrite"/>">게시글 쓰기</a></li>
 		<li><a href="<c:url value="/login/logout"/>">로그아웃</a></li>
 		<li><a href="<c:url value="/member/memberList"/>">회원 리스트</a></li>
+		<li><a href="<c:url value="/myPage/${loginInfo.uidx}"/>">회원 리스트</a></li>
+		<li><a href="<c:url value="/member/memberEdit"/>">My page - 회원정보 수정</a></li>
 		<li><a href="<c:url value="/planner/plannerReg"/>">플래너 만들기</a></li>
 		<li><a href="<c:url value="/planner/calendar"/>">플래너 만들기 2</a></li>
 		</c:if>

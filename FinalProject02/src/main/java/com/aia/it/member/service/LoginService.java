@@ -46,7 +46,7 @@ public class LoginService {
 
 		if (member != null && member.getUverify() == 'Y') {
 
-			LoginInfo loginInfo = new LoginInfo(member.getUidx(), member.getUid(), member.getUname(), member.getUphoto());
+			LoginInfo loginInfo = new LoginInfo(member.getUidx(), member.getUid(), member.getUname(), member.getUphonenum(), member.getUphoto(), member.getUkakao());
 
 			session.setAttribute("loginInfo", loginInfo);
 

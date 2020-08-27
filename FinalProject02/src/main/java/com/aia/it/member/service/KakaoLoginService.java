@@ -34,7 +34,7 @@ public class KakaoLoginService {
 
 
 		if (member != null) {
-			LoginInfo loginInfo = new LoginInfo(member.getUid(), member.getUname(), member.getUphoto());
+			LoginInfo loginInfo = new LoginInfo(member.getUid(), member.getUname(),  member.getUphonenum(),  member.getUphoto(), member.getUkakao());
 
 			session.setAttribute("loginInfo", loginInfo);
 			

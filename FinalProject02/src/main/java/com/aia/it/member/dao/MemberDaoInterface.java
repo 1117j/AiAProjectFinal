@@ -21,9 +21,8 @@ public interface MemberDaoInterface {
 	public List<Member> selectList(int starRow, int count);
 
 	// idx 기반 검색한 회원 정보 반환
-	public Member SelectByUidx(int uidx);
-	
-	// 회원 정보 수정 
+	public Member selectByUidx(int uidx);
+		// 회원 정보 수정 
 	public int editMember(Member member);
 	
 
@@ -32,7 +31,6 @@ public interface MemberDaoInterface {
 
 	public Member selectByIdpw(String uid, String upw);
 	
-	public Member selectMyPage(int uidx); 
 
 	int selectById(String uid);
 

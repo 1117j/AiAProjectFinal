@@ -18,18 +18,25 @@ import com.aia.it.member.model.MemberEditRequest;
 public class MemberEditService {
 	
 	private MemberDaoInterface dao; 
+	
 	@Autowired
 	private SqlSessionTemplate template;
 	
 	public Member getMember(int uidx) {
-		Member member = dao.SelectByUidx(uidx);
 		
+		dao = template.getMapper(MemberDaoInterface.class);
+		
+		Member member = null;
+		
+		member = dao.selectByUidx(uidx);
+		
+		return member;
 	}
 	
-	public int memberEdit(MemberEditRequest editRequest, HttpServletRequest request) {
+	public int memberEdit(int uidx, MemberEditRequest editRequest, HttpServletRequest request) {
 		
-		dao = template.getMapper(MemberDaoInterface.class); 
-		
+		dao = template.getMapper(MemberDaoInterface.class); 		
+
 		int result = 0; 
 		
 		Member member = editRequest.toMember(); 
@@ -61,9 +68,7 @@ public class MemberEditService {
 			}
 			
 			
-		}
-		result = dao.editMember(member); //}
-			
+			}
 		}
 	 catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -74,10 +79,11 @@ public class MemberEditService {
 		} finally {
 		}
 		
+		result = dao.editMember(member); 
+		
 		return result; 
 	}
 
 		
-	}
-
 }
+

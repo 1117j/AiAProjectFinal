@@ -53,7 +53,7 @@ html, body, h1, h2, h3, h4 {
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 	<!-- Contact -->
-	<div class="w3-center w3-padding-64" id="contact">
+	<div class="w3-center w3-padding-64" id="registerForm">
 		<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">회원가입</span>
 	</div>
 

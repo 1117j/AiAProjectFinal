@@ -48,6 +48,12 @@ public class MemberEditRequest {
 		this.oldFile = oldFile;
 	}
 	
+	public String getUphonenum() {
+		return uphonenum;
+	}
+	public void setUphonenum(String uphonenum) {
+		this.uphonenum = uphonenum;
+	}
 	public Member toMember() {
 		return new Member(uidx, uid, upw, uname, uphonenum, oldFile.length()>0?oldFile:null, null, null);
 	}

@@ -3,6 +3,7 @@ package com.aia.it.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.aia.it.board.model.Board;
 import com.aia.it.member.model.Member;
 
 public interface MemberDaoInterface {
@@ -41,6 +42,11 @@ public interface MemberDaoInterface {
 	// 회원 이메일 인증 처리
 	public int verify(String uid, String ucode);
 
+	//회원 휴면 계정
+	int memberDisabled(Member member);
+	
+	//회원 탈퇴
+	int memberDelete(Member member);
 	
 	
 

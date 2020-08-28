@@ -46,6 +46,10 @@
 					<td><input type = "password" id ="upw" name = "upw" value = "${member.upw}" required> </td>
 				</tr>
 				<tr>
+					<td>연락처</td>
+					<td><input type = "text" id ="uphonenum" name = "uphonenum" value = "${member.uphonenum}" required> </td>
+				</tr>
+				<tr>
 					<td>프로필 사진</td>
 					<td><input type = "file" id ="uphoto" name = "photo">
 						<br>

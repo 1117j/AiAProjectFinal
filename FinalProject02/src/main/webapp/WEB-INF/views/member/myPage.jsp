@@ -26,11 +26,6 @@
 			</c:if>
 
 			<tr>
-				<td>카카오정보</td>
-				<td>${myInfo.ukakao}</td>
-			</tr>
-
-			<tr>
 				<td>닉네임</td>
 				<td>${myInfo.uname}</td>
 			</tr>
@@ -45,8 +40,9 @@
 				<td><img alt="사진 " src="${imagePath}/${myInfo.uphoto}"></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td><a href="<c:url value = "/member/editMember"/>"> 수정하기</a></td>
+				<td></td>	
+				<td><a href="../member/memberEdit?uidx=${myInfo.uidx}">수정하기</a></td>
+	
 			</tr>
 		</table>
 

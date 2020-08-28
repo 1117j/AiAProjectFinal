@@ -73,8 +73,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 회원 정보 수정-->
-	<update id = "editMember">
-		update planit.member set uname=#{uname}, upw=#{upw}, uphonenum=#{uphonenum}, uphoto=#{photo}
+	<update id = "editMember" parameterType="com.aia.it.member.model.Member" >
+		update planit.member set uname=#{uname}, upw=#{upw}, uphonenum=#{uphonenum}, uphoto=#{uphoto}
+		where (uidx = #{uidx})
+	
+	</update>
+	
+	<!-- 회원 휴면계정-->
+	<update id = "memberDisabled" parameterType="com.aia.it.member.model.Member" >
+		update planit.member set usignout= 'Y'
 		where (uidx = #{uidx})
 	
 	</update>
@@ -90,5 +97,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	</insert>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="memberDelete" parameterType="com.aia.it.member.model.Member">
+      delete from planit.member where uidx=#{uidx}
+	</delete>
+	
+	
 
 </mapper>

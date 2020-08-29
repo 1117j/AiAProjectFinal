@@ -5,11 +5,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style> 
-.navbar-heade{
-background-color : green;}
-
-
-
+.navbar-header{
+/* navbar 색상변경 */}
 </style>
     
 <nav class="navbar navbar-default">

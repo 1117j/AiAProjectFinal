@@ -62,7 +62,7 @@ public class LoginService {
 			}
 
 			// 로그인 이 필요했던 이전 페이지
-			loginResult = "<script>" + "alert('hi~');" + "location.href='" + loginRequest.getRedirectUri() + "'" + "</script>";
+			loginResult = "<script>" + "location.href='" + loginRequest.getRedirectUri() + "'" + "</script>";
 
 		} else if(member != null && member.getUverify() == 'N') {
 

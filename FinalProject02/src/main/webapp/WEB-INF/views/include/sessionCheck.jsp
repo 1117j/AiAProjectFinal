@@ -10,7 +10,12 @@
 </head>
 <body>
 	<c:if test="${!empty loginInfo}">
- 	${loginInfo} 로그인 중
+
+		<script>
+			location.href = "<c:url value="/member/
+			memberList" />";
+		</script>
+
 	</c:if>
 	<c:if test="${empty loginInfo}">
 		<script>

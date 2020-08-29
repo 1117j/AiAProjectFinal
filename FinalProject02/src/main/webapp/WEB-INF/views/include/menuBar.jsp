@@ -7,7 +7,9 @@
 	href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 html, body, h1, h2, h3, h4 {
 	font-family: "Lato", sans-serif
@@ -29,45 +31,52 @@ html, body, h1, h2, h3, h4 {
 }
 </style>
 
-	<div class="w3-top" id = "headerNav"> 
-		<div class="w3-row w3-large w3-light-grey">
-		
+<div class="w3-bottom" id="headerNav">
+	<div class="w3-row w3-large w3-light-grey">
+
 		<!-- 로그인 세션 없을 시  -->
 		<c:if test="${empty loginInfo}">
-			<div class="w3-col s4">
-				<a href="${pageContext.request.contextPath}/member/memberReg" class="w3-button w3-block">회원가입</a>
+			<div class="w3-col s3">
+				<a href="${pageContext.request.contextPath}/member/memberReg"
+					class="w3-button w3-block">회원가입</a>
 			</div>
-			<div class="w3-col s4">
-				<a href="<c:url value="/home"/>" class="w3-button w3-block"> 로그인 </a>
+			<div class="w3-col s3">
+				<a href="<c:url value="/home"/>" class="w3-button w3-block"> 로그인
+				</a>
 			</div>
-			<div class="w3-col s4">
-				<a href="<c:url value="/board/boardList"/>" class="w3-button w3-block">커뮤니티</a>
+			<div class="w3-col s3">
+				<a href="<c:url value="/board/boardList"/>"
+					class="w3-button w3-block">커뮤니티</a>
 			</div>
 		</c:if>
-		
+
 		<!--로그인 되었는 상태 -->
 		<c:if test="${!empty loginInfo}">
 			<div class="w3-col s2">
-				<a href="<c:url value="/home"/>" class="w3-button w3-block">Home</a>
+				<a href="<c:url value="/home"/>" class="w3-button w3-block"><i class="glyphicon glyphicon-home"></i></a>
 			</div>
 			<div class="w3-col s2">
-				<a href="<c:url value="/planner/calendar"/>" class="w3-button w3-block">Plans</a>
+				<a href="<c:url value="/planner/calendar"/>"
+					class="w3-button w3-block"><i class="glyphicon glyphicon-plane"></i></a>
 			</div>
 			<div class="w3-col s2">
-				<a href="<c:url value="/board/boardList"/>" class="w3-button w3-block">Community</a>
+				<a href="<c:url value="/board/boardList"/>"
+					class="w3-button w3-block"><i class="glyphicon glyphicon-file"></i></a>
 			</div>
 			<div class="w3-col s2">
-				<a href="<c:url value="/myPage/${loginInfo.uidx}"/>" class="w3-button w3-block">My Page</a>
+				<a href="<c:url value="/myPage/${loginInfo.uidx}"/>"
+					class="w3-button w3-block"><i class="glyphicon glyphicon-user"></i></a>
 			</div>
-			<div class="w3-col s2">
-				<a href="<c:url value="/login/logout"/>" class="w3-button w3-block">Log Out</a>
+			<div class="w3-col s4">
+				<a href="<c:url value="/login/logout"/>" class="w3-button w3-block">Log
+					Out</a>
 			</div>
-			
+
 		</c:if>
-		</div>
 	</div>
-	
-	
+</div>
+
+
 <%-- 	<h3 id="header">Plan it</h3>
 	<ul id="nav">
 		<c:if test="${empty loginInfo}">

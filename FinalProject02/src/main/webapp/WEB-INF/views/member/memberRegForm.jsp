@@ -44,7 +44,7 @@ html, body, h1, h2, h3, h4 {
 }
 
 #idchk, #namechk {
-	display: none;
+	 display: none;
 }
 </style>
 </head>
@@ -63,12 +63,14 @@ html, body, h1, h2, h3, h4 {
 			<input class="w3-input w3-border w3-hover-border-black" style="width: 50%;"
 				type="text" name="uname" id ="uname" required>
 			<input type="checkbox" name="namechk" id="namechk">
+			<span  id="checkmsg02"></span>
 		</div>
 		<div class="w3-section">
 			<label>Email</label> 
 			<input class="w3-input w3-border w3-hover-border-black" style="width: 50%;"
 				type="email" name="uid" id = "uid" required>
 			<input type="checkbox" name="idchk" id="idchk">
+			<span  id="checkmsg"></span>
 		</div>
 		<div class="w3-section">
 			<label>Password</label> 
@@ -132,7 +134,7 @@ html, body, h1, h2, h3, h4 {
 					} else {
 						$('#checkmsg').text("사용중인 이메일입니다.");
 						$('#checkmsg').addClass('check_not');
-						$$('#idchk').prop('checked', false);
+						$('#idchk').prop('checked', false);
 					}
 				}
 			});

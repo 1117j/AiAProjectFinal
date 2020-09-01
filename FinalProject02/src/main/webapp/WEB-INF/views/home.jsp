@@ -53,7 +53,11 @@
 	#btn-Yes{
 		font-size: 14px;
 		font-weight: bolder;
-	}
+	}	
+	.check_ok {color: blue;}
+	.check_not {color: red;}
+ /* 	#idpwchk{display: none;} */
+	
 	
     </style>
     
@@ -66,12 +70,8 @@
  <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
  
  	<c:if test="${!empty loginInfo}">	
-		
-	
 	 	<script> location.href = "${pageContext.request.contextPath}/board/boardList"</script>
-	 	
-	
-		</c:if>
+	</c:if>
  
  
     <!--로그인 폼 전체-->
@@ -84,18 +84,20 @@
         <!--로그인 폼 바디-->
 		<c:if test="${empty loginInfo}">
 		<div class="card-body">
-            <form action="<c:url value='/login/login'/>" method="post">
+            <form action="<c:url value='/login/login'/>" id = "loginForm" method="post">
                 <input type="hidden" name="redirectUri" value="${header.referer}"
 				style="width: 50%;">
-                <h6 class="form-signin-heading" style = "text-align : center;">로그인 정보를 입력하세요</h6>
+                <h6 class="form-signin-heading" style = "text-align : center; font-size: 13px;">로그인 정보를 입력하세요</h6>
                 <hr>
        
-                <label for="inputEmail" class="sr-only">이메일을 입력하세요.</label>
-                <input type="email" id="uid" name = "uid" class="form-control" value="${cookie.uid.value}" placeholder="이메일을 입력하세요." required autofocus><BR>
+                <label for="inputEmail" class="sr-only">이메일을 입력하세요.</label> 
+                <input type="email" id="uid" name ="uid" class="form-control" value="${cookie.uid.value}" placeholder="이메일을 입력하세요." required autofocus><BR>
        
                 <label for="inputPassword" class="sr-only">비밀번호를 입력하세요.</label>
                 <input type="password" id="upw" name ="upw" class="form-control" placeholder="비밀번호를 입력하세요." required><br>
-       
+       			
+       			<span  id="checkmsg"></span>
+       			
                 <div class="checkbox">
                 <label>
                 <input type="checkbox" name = "remember" value="r" 
@@ -125,4 +127,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
   </body>
+  <script>
+	  $(document).ready(function() {
+		  
+		  
+		   $('#btn-Yes').click(function(){
+			   
+			  $.ajax({
+				  type: "POST",
+				  url: "login",
+				  data: { "uid" : $('#uid').val(),
+						  "upw" : $('#upw').val()},
+				  success: function(data){
+					switch (String(Data)){
+					case "N" :
+						alert 
+					}
+					}
+			  });  
+		   });
+		});
+/* 	  $('#checkmsg').text("아이디 혹은 패스워드가 잘못되었습니다.");
+ */  </script>
+
+  
+  
 </html>

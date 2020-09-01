@@ -31,7 +31,7 @@ public class LoginService {
 			HttpServletResponse response) {
 		
 		
-		// inteface의 Mapper 객체 생성
+		// interface의 Mapper 객체 생성
 		dao = sessionTemplate.getMapper(MemberDaoInterface.class);
 		
 		
@@ -74,9 +74,10 @@ public class LoginService {
 			loginResult += "</script>";
 			
 		} else{
+			//loginResult = "<script>" + "alert('Please enter a correct email address.');" + "history.go(-1);" + "</script>";
 			loginResult = "<script>" + "alert('Please enter a correct email address.');" + "history.go(-1);" + "</script>";
 		}
-
+		System.out.println("로그인 서비스 1번 :" + loginResult);
 		return loginResult;
 
 	}

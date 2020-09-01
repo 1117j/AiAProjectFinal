@@ -19,12 +19,12 @@ public class IdCheckService {
 		
 		String result = "N"; 
 		
-		System.out.println("1번 :"+result);
+		System.out.println("아이디 체크 서비스 1번 :"+result);
 		
 		int resultCnt = dao.selectById(uid); 
 		if(resultCnt < 1 ) { 
 			result = "Y"; 
-			System.out.println("2번 :"+result);
+			System.out.println("아이디 체크 서비스 2번 :"+result);
 		}
 		return result; 
 	}
@@ -35,12 +35,12 @@ public class IdCheckService {
 		
 		String result = "N"; 
 		
-		System.out.println("1번 :"+result);
+		System.out.println("닉네임 중복 1번 :"+result);
 		
 		int resultCnt = dao.selectByUname(uname); 
 		if(resultCnt < 1 ) { 
 			result = "Y"; 
-			System.out.println("2번 :"+result);
+			System.out.println("닉네임 중복 2번 :"+result);
 		}
 		return result; 
 	}

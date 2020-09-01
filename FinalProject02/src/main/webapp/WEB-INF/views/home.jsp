@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Montserrat+Alternates:wght@600&display=swap" rel="stylesheet">
     <title>로그인</title>
     <style> 
       
@@ -29,8 +29,15 @@
   		/* 선형 그래디언트 + 두가지색상 이어줌 */
   		/* background:linear-gradient(to bottom right, #F5F5F5, #DCDCDC); */
 	}
+	
+	hr {
+		width: 20%;
+	    border: 0;
+	    border-top: 1px solid #eee;
+	}
     
     #loginFormLogo{
+    	margin-top:18px; 
 	    font-family: 'Montserrat Alternates', sans-serif;
 	    color: #00CED1;
     }
@@ -54,11 +61,37 @@
 		font-size: 14px;
 		font-weight: bolder;
 	}	
+	
+	.rememberChkBox{
+		size: 13px; 
+	 	color : grey;
+	}
+	
+	.regFormBtnDiv{
+		text-align : center; 
+	}
+	
+	.form-control {
+		
+		border-radius: 0;
+		font-size : 14px;
+		BORDER-BOTTOM: 1px solid lightgrey;
+		BORDER-LEFT: medium none;
+		BORDER-RIGHT: medium none;
+		BORDER-TOP: medium none;
+		
+	}
+	
+
 	.check_ok {color: blue;}
 	.check_not {color: red;}
  /* 	#idpwchk{display: none;} */
 	
-	
+	#signUpBtn{
+		 color: #00CED1;
+		 font-size: 14px;
+   		 font-weight: bolder;
+	}
     </style>
     
     
@@ -69,10 +102,10 @@
 
  <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
  
- 	<c:if test="${!empty loginInfo}">	
+<%--  	<c:if test="${!empty loginInfo}">	
 	 	<script> location.href = "${pageContext.request.contextPath}/board/boardList"</script>
 	</c:if>
- 
+  --%>
  
     <!--로그인 폼 전체-->
 	<div class="card align-middle" style="width:20rem; border-radius:20px;">	
@@ -82,24 +115,24 @@
 		</div>
         
         <!--로그인 폼 바디-->
-		<c:if test="${empty loginInfo}">
+		<%-- <c:if test="${empty loginInfo}"> --%>
 		<div class="card-body">
-            <form action="<c:url value='/login/login'/>" id = "loginForm" method="post">
+            <form action="<c:url value='/login'/>" id = "loginForm" method="post">
                 <input type="hidden" name="redirectUri" value="${header.referer}"
 				style="width: 50%;">
-                <h6 class="form-signin-heading" style = "text-align : center; font-size: 13px;">로그인 정보를 입력하세요</h6>
+                <h6 class="form-signin-heading" style = "text-align : center; font-size: 12px; color: grey;">로그인 정보를 입력하세요</h6>
                 <hr>
        
-                <label for="inputEmail" class="sr-only">이메일을 입력하세요.</label> 
+                <label for="uid" class="sr-only">이메일을 입력하세요.</label> 
                 <input type="email" id="uid" name ="uid" class="form-control" value="${cookie.uid.value}" placeholder="이메일을 입력하세요." required autofocus><BR>
        
-                <label for="inputPassword" class="sr-only">비밀번호를 입력하세요.</label>
+                <label for="upw" class="sr-only">비밀번호를 입력하세요.</label>
                 <input type="password" id="upw" name ="upw" class="form-control" placeholder="비밀번호를 입력하세요." required><br>
        			
        			<span  id="checkmsg"></span>
        			
                 <div class="checkbox">
-                <label>
+                <label for="remember" class="rememberChkBox" >
                 <input type="checkbox" name = "remember" value="r" 
                 ${cookie.uid != null ? 'checked' : '' }> ID 기억하기
                 </label>
@@ -110,13 +143,14 @@
                 <a id="custom-login-btn" href="${kakao_url}"> 
                 <img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_wide.png"
 								width="278"/></a><hr>
-				<div style = "text-align : center;">
-                <a href = "<c:url value="/member/memberReg"/>" style ="color: red;">회원가입 </a>
+				
+				<div class = "regFormBtnDiv">
+                <a href = "<c:url value="/member/memberReg"/>"><span  id ="signUpBtn">회원가입</span></a>
                 </div>
                 </form>
       
 		</div>
-		</c:if>
+	<%-- 	</c:if> --%>
 	</div>
 
 	<div class="modal">
@@ -127,7 +161,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
   </body>
-  <script>
+<!--   <script>
 	  $(document).ready(function() {
 		  
 		  
@@ -148,7 +182,7 @@
 		   });
 		});
 /* 	  $('#checkmsg').text("아이디 혹은 패스워드가 잘못되었습니다.");
- */  </script>
+ */  </script> -->
 
   
   

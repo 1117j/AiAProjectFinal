@@ -44,9 +44,9 @@
 </div>
 
 <div id="main">
-	<div class="w3-container w3-green">
+	<div class="w3-container w3-default">
 		<h1>나의 정보 수정</h1>
-		<button id="openNav" class="w3-button w3-green w3-xlarge"
+		<button id="openNav" class="w3-button w3-large"
 			onclick="w3_open()">&#9776;</button>
 	</div>
 	<div class="container">

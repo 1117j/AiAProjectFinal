@@ -75,7 +75,7 @@ public class LoginService {
 			
 		} else{
 			//loginResult = "<script>" + "alert('Please enter a correct email address.');" + "history.go(-1);" + "</script>";
-			loginResult = "<script>" + "alert('Please enter a correct email address.');" + "history.go(-1);" + "</script>";
+			loginResult = "<script type=\"text/javascript\" charset=\"UTF-8\">" + "alert('로그인 정보를 확인해주세요. ');" + "history.go(-1);" + "</script>";
 		}
 		System.out.println("로그인 서비스 1번 :" + loginResult);
 		return loginResult;

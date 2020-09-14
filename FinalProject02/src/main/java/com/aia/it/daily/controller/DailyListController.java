@@ -22,7 +22,7 @@ public class DailyListController {
 		
 		/* @RequestMapping(method = RequestMethod.POST) */
 		@GetMapping
-		public List<PlannerJoinDaily> getBoardList(
+		public int getBoardList(
 				int uidx,
 					Model model,
 					HttpServletRequest request
@@ -32,7 +32,7 @@ public class DailyListController {
 			System.out.println(uidx);
 			/* model.addAttribute("listView", listService.getView(request, uidx)); */
 			
-			return listService.getView(request, uidx);
+			return 0 ;
 			
 		}
 			

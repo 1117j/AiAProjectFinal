@@ -1,3 +1,4 @@
+
 package com.aia.it.comment.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,20 +14,18 @@ import com.aia.it.comment.service.CommentDeleteService;
 
 @Controller
 public class CommentDeleteController {
-   
-@Autowired
-   private CommentDeleteService deleteService;
-   
-   @RequestMapping("/comment/commentDelete")
-   public String deleteComment(
-            @RequestParam("cidx") int cidx,
-            HttpServletRequest request,
-            Model model
-         ) {
-      
-      model.addAttribute("msg", deleteService.commentDelete(cidx,request));
-      return "comment/commentDelete";
-      
-   }
+
+	@Autowired
+	private CommentDeleteService deleteService;
+
+	@RequestMapping("/comment/commentDelete")
+	public String deleteComment(
+
+			@RequestParam("cidx") int cidx,  Model model) {
+
+		model.addAttribute("msg", deleteService.commentDelete(cidx));
+		return "comment/commentDelete";
+
+	}
 
 }

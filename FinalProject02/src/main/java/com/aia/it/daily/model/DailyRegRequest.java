@@ -1,6 +1,5 @@
 package com.aia.it.daily.model;
 
-import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -9,6 +8,7 @@ public class DailyRegRequest {
 	private String dloc;
 	private String dloclon;
 	private String dloclat;
+	private String daddr;
 	private String dmsg;
 	private MultipartFile dphoto;
 	private String dtype;
@@ -17,7 +17,7 @@ public class DailyRegRequest {
 	private int pidx;
 	
 	public Daily toDaily() {
-		return new Daily(dloc,dloclon,dloclat,dmsg,dtype, ddate, ddidx, pidx);
+		return new Daily(dloc,dloclon,dloclat,daddr,dmsg,dtype, ddate, ddidx, pidx);
 	}
 
 	public String getDloc() {
@@ -93,11 +93,19 @@ public class DailyRegRequest {
 		this.ddidx = ddidx;
 	}
 
+	public String getDaddr() {
+		return daddr;
+	}
+
+	public void setDaddr(String daddr) {
+		this.daddr = daddr;
+	}
+
 	@Override
 	public String toString() {
-		return "DailyRegRequest [dloc=" + dloc + ", dloclon=" + dloclon + ", dloclat=" + dloclat + ", dmsg=" + dmsg
-				+ ", dphoto=" + dphoto + ", dtype=" + dtype + ", ddate=" + ddate + ", ddidx=" + ddidx + ", pidx=" + pidx
-				+ "]";
+		return "DailyRegRequest [dloc=" + dloc + ", dloclon=" + dloclon + ", dloclat=" + dloclat + ", daddr=" + daddr
+				+ ", dmsg=" + dmsg + ", dphoto=" + dphoto + ", dtype=" + dtype + ", ddate=" + ddate + ", ddidx=" + ddidx
+				+ ", pidx=" + pidx + "]";
 	}
 
 	

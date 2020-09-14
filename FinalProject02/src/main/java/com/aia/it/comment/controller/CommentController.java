@@ -1,3 +1,4 @@
+
 package com.aia.it.comment.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,48 +16,33 @@ import com.aia.it.comment.model.CommentRequest;
 import com.aia.it.comment.service.CommentService;
 
 @Controller
+
 @RequestMapping("/comment/comment")
 public class CommentController {
-	
-	
+
 	@Autowired
 	CommentService cService;
-	
+
 	@Autowired
 	BoardListService bService;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public String getCommentForm(
-			HttpServletResponse response,
-			HttpServletRequest request,
-			Model model
-			) {
-		
-		
-		model.addAttribute("listView",bService.getView(request, response));
+	public String getCommentForm(HttpServletResponse response, HttpServletRequest request, Model model) {
+
+		model.addAttribute("listView", bService.getView(request, response));
 
 		return "comment/commentForm";
-		
-	}
-	
-		
-	@RequestMapping(method = RequestMethod.POST)
-	public String getComment(Comment comment,
-			HttpServletRequest request,
-			Model model
-			) {
-		System.out.println("controller: "+comment);
-		
-		model.addAttribute("result", cService.commentWrite(comment, request));
-		
-		return "comment/comment";
-		
-		
-	}
-	
 
-	
-	
-	
-	
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String getComment(Comment comment, HttpServletRequest request, Model model) {
+		System.out.println("controller: " + comment);
+
+		model.addAttribute("result", cService.commentWrite(comment));
+
+		return "comment/comment";
+
+	}
+
 }

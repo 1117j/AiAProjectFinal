@@ -14,7 +14,7 @@ ${result }
 
 	<script>
 	
-	alert('데일리 플랜을 저장하였습니다.');
+	alert('데일리 저장완료');
 	location.href = "<c:url value="/planner/plannerReg"/>";
 	/* location.href = '<c:url value="/login/login"/>'; */
 

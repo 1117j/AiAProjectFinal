@@ -14,8 +14,13 @@
 <head>
 
     <style> 
-      
-    html {height: 100%;}  
+       
+    html {
+    height: 100%;
+    scroll-behavior: smooth;
+    
+    
+    }  
     
     body {
 	    width:100%;
@@ -35,7 +40,7 @@
 	}
 	
 	th, td {
-    border: 1px solid #444444;
+    border: 1px solid lightgrey;
   }
 	
 	hr {
@@ -43,11 +48,17 @@
 	    border: 0;
 	    border-top: 1px solid #eee;
 	}
+	
+	a{
+		text-decoration: none;
+		color: #00CED1;
+	}
      
     #loginFormLogo{
-    	margin-top:18px; 
+    	margin-top:10px; 
+    	margin-bottom: 0;
 	    font-family: 'Montserrat Alternates', sans-serif;
-	    color: #00CED1;
+`	    color: #00CED1;
     }
     
     
@@ -59,6 +70,18 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 	
+	#card-title{
+		color: #00CED1;
+		margin-top: 10px;
+	 	margin-bottom: 5px;
+	 	
+	}
+	
+	#card-body{
+	 padding-top: 5px;
+	
+	}
+	
 	.btn-primary {
 	    color: #fff;
 	    background-color: #00CED1; /* DarkTurquoise #00CED1 */
@@ -68,7 +91,14 @@
 	
 	.planListBtn, .boardListBtn{
 		text-align : center; 
+		}
+
+	
+	#mainPlanList, #mainBoardList{
+/* 	border: 1px solid lightgrey;  */
+	
 	}
+	
 	
 	.form-control {
 		
@@ -90,18 +120,25 @@
 	.mainNav li { 
 		display: inline; 
 		color: grey;
-		padding-left: 20px; 
-		padding-right: 20px;
-		font-size: 20px; 
+		padding-left: 15px; 
+		padding-right: 15px; 
 		text-align: center;
 		 }
 	
 	
-    .mainNav li a:hover {
-			background-color: #CD853F;
-			color: white;
-		}
+    .mainNav li a:hover  {
+		color: #E9967A;
+	}
+
+	.mainPlanList a, .mainBoardList a{
+		color: #E9967A;
+	}
     
+    #mainNavSpan{
+    	color: grey;
+    	font-size: 9px; 
+    }    
+   
     </style>
 
 
@@ -110,42 +147,57 @@
 <body>
 
 <c:if test="${!empty loginInfo}">	
-	<%-- <%@ include file="/WEB-INF/views/include/header.jsp"%>	
- --%>
 	<div class="card align-middle" style="width:20rem; border-radius:20px;">	
-        <div class="card-title" style="margin-top:20px;">
+        <div class="card-title" id  ="card-title">
 			<h2 id = "loginFormLogo" class="card-title text-center">Plan It!</h2>
+			<hr>
 		</div>
-        
+       
 
-		<div class="card-body">
+		<div class="card-body" id = "card-body" style = "text-align : center;">
                 <input type="hidden" name="redirectUri" value="${header.referer}"
 				style="width: 50%;">
                 <!-- <h6 class="form-signin-heading" style = "text-align : center; font-size: 12px; color: grey;">오늘의 픽</h6> -->
-                <hr>
                 
-                <div class="mainPlanList" style = "text-align : center;">
+                
+                <div class="mainPlanList" id ="mainPlanList"> <!-- style = "text-align : center;" -->
               
-              	<h6> 나의 플랜리스트 1</h6> 
+              	<h6 style = "text-align : left;"> 나의 플랜</h6> 
               	
               	<table>
               		<tr> 
-              			<td>내 플랜 1 </td>
-              			<td>내 플랜 제목이야</td>
-              			<td>수정</td>
+              			<td>1</td>
+              			<td>0824 제주 여행</td>
+              			<td>
+              				<i class="fa fa-plus-circle" aria-hidden="true"></i>
+              			</td>
+              			<td>
+              				<i class="fa fa-pencil" aria-hidden="true"></i>
+              			</td>
+              			
               		</tr>
        				<tr> 
-              			<td>내 플랜2</td>
-              			<td>내플랜 2 제목</td>
-              			<td>수정</td>
+              			<td>2</td>
+              			<td>제주도 2박3일</td>
+              			<td>
+              				<i class="fa fa-plus-circle" aria-hidden="true"></i>
+              			</td>
+              			<td>
+              				<i class="fa fa-pencil" aria-hidden="true"></i>
+              			</td>
               		</tr>
               		<tr> 
-              			<td>내 플랜2</td>
-              			<td>내플랜 2 제목</td>
-              			<td>수정</td>
+              			<td>3</td>
+              			<td>다음주 여행</td>
+						<td>
+              				<i class="fa fa-plus-circle" aria-hidden="true"></i>
+              			</td>
+              			<td>
+              				<i class="fa fa-pencil" aria-hidden="true"></i>
+              			</td>
               		</tr>
               		<tr> 
-              			<td colspan = "3">
+              			<td colspan = "4">
               			<div class = "planListBtn">
               			<a href = "<c:url value="/member/memberReg"/>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
               			</div>
@@ -161,51 +213,87 @@
        			
                
        			
-                <div class="mainBoardList" style = "text-align : center;">
+                <div class="mainBoardList" id ="mainBoardList" style = "text-align : center;">
                 
-                <h6> 상위 게시글 리스트 1</h6> 
+                <h6 style = "text-align : left;"> 커뮤니티 차트</h6> 
                
                 <table>
               		<tr> 
-              			<td>top 1 </td>
-              			<td>안녕하세요~</td>
+              			<td>1</td>
+              			<td>
+              				<i class="fa fa-user" aria-hidden="true"></i>
+              			</td>
               			<td>창일</td>
+              			<td>안녕하세요~</td>
+              			
+              			<td>
+              				<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              			</td>
               		</tr>
        				<tr> 
-              			<td>top 2</td>
-              			<td>제주도로 오세요</td>
+       					<td>2</td>
+       					<td>
+              				<i class="fa fa-user" aria-hidden="true"></i>
+              			</td>
               			<td>현정</td>
+              			
+              			<td>제주도로 오세요</td>
+              			
+              			<td>
+              				<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              			</td>
               		</tr>
-              		<tr> 
-              			<td>top3</td>
-              			<td>즐거운 목포 여행</td>
+              		<tr>
+              			<td>3</td>
+              			<td>
+              				<i class="fa fa-user" aria-hidden="true"></i>
+              			</td> 
               			<td>미선</td>
+              			<td>즐거운 목포 여행</td>
+              			
+              			<td>
+              				<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              			</td>
               		</tr>
               		<tr> 
-              			<td colspan = "3">
+              			<td colspan = "5">
               			<div class = "boardListBtn">
-              			<a href = "<c:url value="/member/memberReg"/>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+              			<a href = "<c:url value="/board/boardList"/>"> + 더보기 </a>
               			</div>
               			</td>
               		</tr>
               	</table>
-   
+   			
+                </div>
                 
                 <hr> 
                 
                 
+                <!--메인화면 네비  -->
                 <div class = "mainNavDiv">
                	<ul class = "mainNav"> 
-               		<li><a href = "<c:url value="/member/memberReg"/>"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-               		<li><a href = "<c:url value="/member/memberReg"/>"><i class="fa fa-table" aria-hidden="true"></i></a></li>
-               		<li><a href = "<c:url value="/member/memberReg"/>"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
-               		<li><a href = "<c:url value="/member/memberReg"/>"><i class ="fa fa-user" aria-hidden="true"></i></a></li>
+               		<li>
+               			<a href = "<c:url value="/member/memberList"/>"><i class="fa fa-home fa-2x" aria-hidden="true">
+               			<br><span id = "mainNavSpan">메인</span></i></a>
+               		</li>
+               		<li>
+               			<a href="<c:url value="/planner/calendar"/>"><i class="fa fa-book fa-2x" aria-hidden="true">
+               			<br><span id = "mainNavSpan">플래너</span></i></a>
+               		</li>
+               		<li>
+               			<a href="<c:url value="/board/boardList"/>"><i class="fa fa-pencil fa-2x" aria-hidden="true">
+               			<br><span id = "mainNavSpan">커뮤니티</span></i></a>
+               		</li>
+               		<li>
+               			<a href = "<c:url value="/myPage/${loginInfo.uidx}"/>"><i class ="fa fa-user fa-2x" aria-hidden="true">
+               			<br><span id = "mainNavSpan">마이페이지</span></i></a>
+               		</li>
                	</ul>
                 </div>
-                </div>
+                
 				
 				 
-      
+      		
 		</div>
 	</div>
 	 	
